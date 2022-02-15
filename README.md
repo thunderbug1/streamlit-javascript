@@ -25,7 +25,7 @@ print(f"Return value was: {return_value}")
 
 ## Demo
 
-![example image](https://github.com/thunderbug1/streamlit-javascript/raw/main/group_selection_example.gif)
+![example image](https://github.com/thunderbug1/streamlit-javascript/blob/master/example.png)
 
 [github_link]: https://github.com/thunderbug1/streamlit-javascript
 [github_badge]: https://badgen.net/badge/icon/GitHub?icon=github&color=black&label
