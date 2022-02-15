@@ -1,6 +1,6 @@
 # Streamlit javascript execution
 
-[![GitHub][github_badge]][github_link]
+[![GitHub][github_badge]][github_link] [![PyPI][pypi_badge]][pypi_link] 
 
 ## Installation
 
@@ -29,3 +29,7 @@ print(f"Return value was: {return_value}")
 
 [github_link]: https://github.com/thunderbug1/streamlit-javascript
 [github_badge]: https://badgen.net/badge/icon/GitHub?icon=github&color=black&label
+
+[pypi_badge]: https://badge.fury.io/py/streamlit-javascript.svg
+[pypi_link]: https://pypi.org/project/streamlit-javascript/
+
