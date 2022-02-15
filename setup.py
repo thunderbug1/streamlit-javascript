@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="streamlit-javascript",
-    version="0.1.0",
+    version="0.1.1",
     author="Alexander Balasch",
     author_email="",
     description="component to run javascript code in streamlit application",
