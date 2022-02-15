@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="streamlit-javascript",
-    version="0.1.2",
+    version="0.1.4",
     author="Alexander Balasch",
     author_email="",
     description="component to run javascript code in streamlit application",
@@ -18,11 +18,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
+    include_package_data=True,
     python_requires=">=3.6",
     install_requires=[
-        # By definition, a Custom Component depends on Streamlit.
-        # If your component has other Python dependencies, list
-        # them here.
         "streamlit >= 0.75",
     ],
 )
