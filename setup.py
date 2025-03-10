@@ -1,26 +1,44 @@
+import os
 import setuptools
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+THIS_DIRECTORY = os.path.dirname(__file__)
+STREAMLIT_VERSION = "1.42.0"  # PEP-440
+
+
+readme_path = os.path.join(THIS_DIRECTORY,"README.md")
+if os.path.exists(readme_path):
+    with open(readme_path, "r", encoding="utf-8") as fh:
+        long_description = fh.read()
+else:
+    long_description=""
 
 setuptools.setup(
     name="streamlit-javascript",
-    version="0.1.5",
-    author="Alexander Balasch",
-    author_email="",
+    version=STREAMLIT_VERSION,
     description="component to run javascript code in streamlit application",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thunderbug1/streamlit-javascript",
-    packages=setuptools.find_packages(),
+    author="Alexander Balasch & Strings",
+    author_email="",
+    license="MIT License",
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Intended Audience :: Developers",
+        "Intended Audience :: Science/Research",
         "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
+        "Programming Language :: Python :: 3.13",
         "Operating System :: OS Independent",
     ],
-    include_package_data=True,
-    python_requires=">=3.6",
     install_requires=[
-        "streamlit >= 0.75",
+        "streamlit >= " + STREAMLIT_VERSION,
     ],
+    python_requires=">=3.9, !=3.9.7",  # match streamlit v1.42.0
+    # PEP 561: https://mypy.readthedocs.io/en/stable/installed_packages.html
+    packages=setuptools.find_packages(),
+    zip_safe=False,  # install source files not egg
+    include_package_data=True,  # copy html and friends
 )

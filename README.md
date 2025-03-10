@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-pip install streamlit-javascript
+pip install streamlit-javascript>=1.42.0
 ```
 
 ## Getting started
@@ -32,4 +32,3 @@ print(f"Return value was: {return_value}")
 
 [pypi_badge]: https://badge.fury.io/py/streamlit-javascript.svg
 [pypi_link]: https://pypi.org/project/streamlit-javascript/
-
