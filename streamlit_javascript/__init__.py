@@ -1,5 +1,7 @@
 import os
+from typing import Any
 import streamlit.components.v1 as components
+from streamlit.runtime.state.common import WidgetCallback
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
 # the component, and True when we're ready to package and distribute it.
@@ -43,33 +45,56 @@ else:
 # `declare_component` and call it done. The wrapper allows us to customize
 # our component's API: we can pre-process its input args, post-process its
 # output value, and add a docstring for users.
-def st_javascript(js_code, key=None):
+def st_javascript(
+    js_code: str,
+    default: Any = 0,
+    key: str | None = None,
+    poll: int = 0,
+    on_change: WidgetCallback | None = None,
+) -> Any:
     """Create a new instance of "st_javascript".
 
     Parameters
     ----------
     js_code: str
-        The javascript code that is to be executed on the client side. It can be synchronous or asynchronous."
+        The javascript expression that is to be evaluated on the client side.
+        It can be synchronous or asynchronous.
+    default: any or None
+        The default return value for the component. This is returned when
+        the component's frontend hasn't yet specified a value with
+        `setComponentValue`.
     key: str or None
         An optional key that uniquely identifies this component. If this is
         None, and the component's arguments are changed, the component will
         be re-mounted in the Streamlit frontend and lose its current state.
+    poll: int
+        If greater than 0, the number of milliseconds to pause between repeatedly
+        checking the value of the javascript expression, and calling
+        `setComponentValue` for each change
+    on_change: callback function with no arguments returning None
+        Will be called each time the expression evaluation changes, best used
+        in combination with poll, and key so you can access the updated value with
+        st.session_state[key]
+
 
     Returns
     -------
     obj
-        The result of the executed javascript
+        The result of the executed javascript expression
     """
     # Call through to our private component function. Arguments we pass here
     # will be sent to the frontend, where they'll be available in an "args"
     # dictionary.
-    #
-    # "default" is a special argument that specifies the initial return
-    # value of the component before the user has interacted with it.
-    component_value = _component_func(js_code=js_code, key=key, default=0)
-
+    component_value = _component_func(
+        js_code=js_code,
+        default=default,
+        key=key,
+        poll=poll,
+        on_change=on_change,
+        height=0,
+        width=0,
+    )
     # We could modify the value returned from the component if we wanted.
-    # There's no need to do this in our simple example - but it's an option.
     return component_value
 
 
