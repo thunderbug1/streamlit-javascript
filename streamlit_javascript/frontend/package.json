@@ -13,13 +13,17 @@
     "streamlit-component-lib": "^2.0.0",
     "typescript": "^4.0.0"
   },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
   "//": "Overrides to fix vulnerabilities",
   "overrides": {
     "nth-check": "^2.0.1",
     "postcss": "^8.4.31"
   },
   "scripts": {
-    "start": "BROWSER=none react-scripts start",
+    "start": "concurrently \"BROWSER=none react-scripts start\" \"streamlit run ../../dev.py --browser.serverAddress localhost --browser.gatherUsageStats false\"",
+    "hottsx": "BROWSER=none react-scripts start",
     "build": "react-scripts build"
   },
   "browserslist": {
