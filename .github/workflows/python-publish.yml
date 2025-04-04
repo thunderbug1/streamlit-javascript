@@ -26,6 +26,10 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Verify package.json presence
+        run: |
+          ls -al streamlit_javascript/frontend
+
       - name: Build release distributions
         run: |
           # NOTE: put your own distribution build steps here.
