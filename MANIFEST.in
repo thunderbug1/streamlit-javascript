@@ -1,2 +1,2 @@
 recursive-include streamlit_*/frontend/build *
-include streamlit_javascript/frontend/package.json
+include streamlit_*/frontend/package.json
